@@ -1,0 +1,9 @@
+.footerSection{
+    /* margin-top: 50px; */
+    padding-top: 50px;
+    border-top: 2px solid white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+
+}

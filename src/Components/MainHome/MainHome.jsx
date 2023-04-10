@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
+import Card from '../Card/Card';
+
+
+
 
 const MainHome = () => {
     const [data,setData]=useState([])
+    const [jobInfo,setJobInfo]=useState([])
+    useEffect(()=>{
+        fetch('jobData.json')
+        .then(res=>res.json())
+        .then(data=>setJobInfo(data))
+    },[])
     useEffect(()=>{
         fetch('data.json')
         .then(res=>res.json())
@@ -29,7 +39,7 @@ const MainHome = () => {
         
        </div>
 
-       <div className='singleCart mt-8 gap-10'>
+       <div className='pb-7 singleCart mt-8 gap-10'>
         {
            data.map(singleData=><Cart 
            key={singleData.id}
@@ -40,10 +50,19 @@ const MainHome = () => {
         </div>
 
         <div>
-        <div className='text-center pt-[80px]'>
-       <h1 className='text-5xl font-extrabold text-[#1a1919]'>Featured Jobs</h1>
+        <div className=' pt-[80px]'>
+       <h1 className='text-5xl  text-center font-extrabold text-[#1a1919]'>Featured Jobs</h1>
         <p className='mt-5 font-medium text-base text-center text-[#757575]'>Explore thousands of job opportunities with all the information you need. Its your future</p>
         
+        <div className='grid grid-cols-2 gap-8 mx-[30px]'>
+
+            {
+           jobInfo.map(info=><Card
+           key={info.id}
+           info={info}
+           ></Card>)
+            }
+        </div>
        </div>
 
 
@@ -52,5 +71,6 @@ const MainHome = () => {
        </div>
     );
 };
+
 // bg-gradient-to-r from-[#7E90FE] to-[#9873FF]
 export default MainHome;
