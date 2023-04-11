@@ -2,7 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
@@ -14,10 +14,13 @@ import Blog from "./Components/Blog/Blog";
 import Error from "./Components/Error/Error";
 import JobDetails from "./Components/JobDetails/JobDetails";
 
+
+
 const router=createBrowserRouter([
   {
     path:'/',
     element:<Home></Home>,
+    errorElement:<Error></Error>,
     children:[
       {
         path:'/',
@@ -33,19 +36,18 @@ const router=createBrowserRouter([
         path:"blog",
         element:<Blog>   </Blog>
       },{
-        path:"jobdetail",
-        element:<JobDetails></JobDetails>
+        path:"/job/:id",
+        element:<JobDetails></JobDetails>,
+        loader:()=>fetch('/jobData.json')
+        
       }
     ]
-  },{
-    path:'*',
-    errorElement:<Error></Error>
   }
+  
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    
     <RouterProvider router={router}></RouterProvider>
     {/* <App /> */}
   </React.StrictMode>,

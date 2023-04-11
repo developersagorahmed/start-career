@@ -8,17 +8,24 @@ import Card from '../Card/Card';
 const MainHome = () => {
     const [data,setData]=useState([])
     const [jobInfo,setJobInfo]=useState([])
+
     useEffect(()=>{
         fetch('jobData.json')
         .then(res=>res.json())
         .then(data=>setJobInfo(data))
     },[])
+
+    
     useEffect(()=>{
         fetch('data.json')
         .then(res=>res.json())
         .then(data=>setData(data))
     },[])
+    
+const [seeMore,setSeeMore]=useState(false)
+
     return (
+        <>
        <div>
          <div className='bg-[#f9f9ff] flex pl-[100px] pr-[100px] pt-[50px] space-x-8 '>
         <div className='md:w-[1050px] ' >
@@ -55,12 +62,18 @@ const MainHome = () => {
         <p className='mt-5 font-medium text-base text-center text-[#757575]'>Explore thousands of job opportunities with all the information you need. Its your future</p>
         
         <div className='grid grid-cols-2 gap-8 mx-[30px]'>
-
+    
             {
-           jobInfo.map(info=><Card
-           key={info.id}
-           info={info}
-           ></Card>)
+                seeMore||jobInfo.slice(0,4).map(info=><Card
+                    key={info.id}
+                    info={info}
+                    ></Card>)
+            }
+            {
+                seeMore&&jobInfo.map(info=><Card
+                    key={info.id}
+                    info={info}
+                    ></Card>)
             }
         </div>
        </div>
@@ -69,6 +82,10 @@ const MainHome = () => {
 
         </div>
        </div>
+           <div className='w-full flex'>
+           <button className='mx-auto mt-[80px] bg-gradient-to-r from-[#7E90FE] to-[#9873FF] p-3 text-white font-bold rounded-lg hover:bg-slate-400' onClick={()=>setSeeMore(true)}>See More</button>
+           </div>
+       </>
     );
 };
 

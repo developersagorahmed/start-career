@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 
 const Card = ({info}) => {
-console.log(info);
-   const {companyLogo,jobTitle,companyName,remoteOrOnsite,fullTimeOrPartTime,location,salary}=info
+   const {id,companyLogo,jobTitle,companyName,remoteOrOnsite,fullTimeOrPartTime,location,salary}=info;
+   
     return (
         <div className=' pt-[40px] w-[600px] h-full pl-[40px] border-2 border-[#e8e8e8] rounded-lg mt-[32px]' >
             <img className='w-[250px] h-[90px]' src={companyLogo} alt="" />
@@ -23,7 +23,7 @@ console.log(info);
                 <p className='text-left ml-6'><FontAwesomeIcon className='w-[24px] h-[24px]' icon={faCircleDollarToSlot} /><span className='ml-[10px] font-semibold text-xl text-[#757575]'>Salary: {salary}</span></p>
                 
             </div>
-            <Link to='/jobdetail'><button className="mt-6 mb-[40px] text-left bg-gradient-to-r from-[#7E90FE] to-[#9873FF] p-3 text-white font-bold rounded-lg hover:bg-slate-400">View Details</button></Link>
+            <Link to={`/job/${id}`}><button className="mt-6 mb-[40px] text-left bg-gradient-to-r from-[#7E90FE] to-[#9873FF] p-3 text-white font-bold rounded-lg hover:bg-slate-400">View Details</button></Link>
         </div>
 
         
