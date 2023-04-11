@@ -11,6 +11,8 @@ import MainHome from "./Components/MainHome/MainHome";
 import Statistics from "./Components/Statistics/Statistics";
 import AppliedJob from "./Components/AppliedJob/AppliedJob";
 import Blog from "./Components/Blog/Blog";
+import Error from "./Components/Error/Error";
+import JobDetails from "./Components/JobDetails/JobDetails";
 
 const router=createBrowserRouter([
   {
@@ -30,8 +32,14 @@ const router=createBrowserRouter([
       },{
         path:"blog",
         element:<Blog>   </Blog>
+      },{
+        path:"jobdetail",
+        element:<JobDetails></JobDetails>
       }
     ]
+  },{
+    path:'*',
+    errorElement:<Error></Error>
   }
 ])
 
