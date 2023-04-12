@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLoaderData, useParams } from 'react-router-dom';
 
 const AppliedJob = () => {
+    
+    const idd=JSON.parse(localStorage.getItem('id'))
+
+    console.log(idd);
+
     return (
         <div>
-            <h1>This is applied job section</h1>
+            {
+                idd.map(data=>console.log(data))
+            }
         </div>
     );
 };

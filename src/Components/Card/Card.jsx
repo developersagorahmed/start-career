@@ -4,11 +4,15 @@ import { faLocationDot,faCircleDollarToSlot } from '@fortawesome/free-solid-svg-
 import { Link } from 'react-router-dom';
 
 
+
 const Card = ({info}) => {
    const {id,companyLogo,jobTitle,companyName,remoteOrOnsite,fullTimeOrPartTime,location,salary}=info;
-   
+
+   const localData=()=>{
+        
+    }
     return (
-        <div className=' pt-[40px] w-[600px] h-full pl-[40px] border-2 border-[#e8e8e8] rounded-lg mt-[32px]' >
+        <div className=' pt-[40px] md:w-[600px] h-full pl-[40px] border-2 border-[#e8e8e8] rounded-lg mt-[32px]' >
             <img className='w-[250px] h-[90px]' src={companyLogo} alt="" />
             <h3 className='text-left font-extrabold text-2xl text-[#474747] mt-[37px]'>{jobTitle}</h3>
             <p className='text-left font-semibold text-xl text-[#757575] mt-3'>{companyName}</p>

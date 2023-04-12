@@ -42,7 +42,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <a className="font-extrabold text-[32px] text-[#1A1919]">Start Carrier</a>
+          <a className="md:font-extrabold md:text-[32px] text-[#1A1919]">Start Carrier</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
