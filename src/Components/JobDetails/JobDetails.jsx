@@ -9,7 +9,7 @@ import {
 	faPhone,
 	faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
-import { json, useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 
 import "./JobDetails.css";
 
