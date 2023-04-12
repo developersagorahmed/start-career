@@ -75,11 +75,11 @@ const JobDetails = () => {
 			const bookmarked = preBook.find((bm) => bm.id == id);
 
 			if (bookmarked) {
-				toast("already bookmarked");
+				toast("Already Applied");
 			} else {
+				toast("You job Applied");
 				idd.push(...preBook, data);
 				localStorage.setItem("id", JSON.stringify(idd));
-				// alert("you job added");
 			}
 
 			console.log(idd);
@@ -90,7 +90,7 @@ const JobDetails = () => {
 		} else {
 			idd.push(data);
 			localStorage.setItem("id", JSON.stringify(idd));
-			toast("you job added");
+			toast("You job Applied");
 		}
 	};
 
