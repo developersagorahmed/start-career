@@ -4,7 +4,7 @@ import {
 } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+
 import './index.css'
 import Home from "./Components/Home/Home";
 import MainHome from "./Components/MainHome/MainHome";
