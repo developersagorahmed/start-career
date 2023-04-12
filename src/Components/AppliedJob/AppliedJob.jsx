@@ -1,27 +1,40 @@
-import React, { useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
-import Scart from '../Scart/Scart';
+import React, { useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
+import Scart from "../Scart/Scart";
 
 const AppliedJob = () => {
-    
-    const idd=JSON.parse(localStorage.getItem('id'))
+	const idd = JSON.parse(localStorage.getItem("id"));
+	const [search, setSearch] = useState("");
 
-    console.log(idd);
+	// console.log(search,"");
 
-    return (
-        <div>
-             <div className='mt-10 flex justify-end mr-[100px] '>
-     <button className="mr-4 mt bg-gradient-to-r from-[#7E90FE] to-[#9873FF] p-3 text-white font-bold rounded-lg hover:bg-slate-400">Remote</button>
-      <button className="bg-gradient-to-r from-[#7E90FE] to-[#9873FF] p-3 text-white font-bold rounded-lg hover:bg-slate-400">Full Time</button>
-     </div>
-            {
-                idd.map(data=><Scart 
-                key={data.id}
-                jobData={data}
-                ></Scart>)
-            }
-        </div>
-    );
+	return (
+		<div>
+			<div className="mt-10 flex justify-end mr-[100px] ">
+				<select
+					onChange={(e) => setSearch(e.target.value)}
+					className=" bg-base-200 border-2 border-purple-500 w-32  mb-2 mt-2 py-2 px-3 rounded font-semibold text-lg text-left"
+				>
+					<option value="onsite">Onsite</option>
+					<option value="remote">Remote</option>
+				</select>
+			</div>
+
+			{idd
+				?.filter((item) => {
+					return search.toLocaleLowerCase() == ""
+						? item
+						: item.jobResponsibility.toLocaleLowerCase().includes(search);
+				})
+				?.map((data) => (
+					<Scart key={data.id} jobData={data}></Scart>
+				))}
+
+			{/* {idd?.map((data) => (
+				<Scart key={data.id} jobData={data}></Scart>
+			))} */}
+		</div>
+	);
 };
 
 export default AppliedJob;
