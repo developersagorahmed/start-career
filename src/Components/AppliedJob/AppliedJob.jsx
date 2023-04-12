@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import Scart from '../Scart/Scart';
 
 const AppliedJob = () => {
     
@@ -10,7 +11,10 @@ const AppliedJob = () => {
     return (
         <div>
             {
-                idd.map(data=>console.log(data))
+                idd.map(data=><Scart 
+                key={data.id}
+                jobData={data}
+                ></Scart>)
             }
         </div>
     );
